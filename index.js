@@ -1,52 +1,58 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
-            'X-RapidAPI-Key': 'f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1'
-        }
-    };
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
+//             'X-RapidAPI-Key': 'f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1'
+//         }
+//     };
     
-    fetch('https://online-movie-database.p.rapidapi.com/actors/list-most-popular-celebs?homeCountry=US&currentCountry=US&purchaseCountry=US', options)
-        .then(response => response.json())
-        .then(response => getActorBio(response))
-        .catch(err => console.error(err));
+//     fetch('https://online-movie-database.p.rapidapi.com/actors/list-most-popular-celebs?homeCountry=US&currentCountry=US&purchaseCountry=US', options)
+//         .then(response => response.json())
+//         .then(response => getActorBio(response))
+//         .catch(err => console.error(err));
 
 
     
 
-        function pickRandom(array) {
-            let random = Math.floor(Math.random() * 100)
-            return array[random].slice(6)
-        }
+//         function pickRandom(array) {
+//             let random = Math.floor(Math.random() * 100)
+//             return array[random].slice(6)
+//         }
 
        
-        function getActorBio (topHundredArray) {
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
-                'X-RapidAPI-Key': 'f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1'
-            }
-        };
+//         function getActorBio (topHundredArray) {
+//         const options = {
+//             method: 'GET',
+//             headers: {
+//                 'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
+//                 'X-RapidAPI-Key': 'f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1'
+//             }
+//         };
         
-        fetch(`https://online-movie-database.p.rapidapi.com/actors/get-bio?nconst=${pickRandom(topHundredArray)}`, options)
-            .then(response => response.json())
-            .then(response => copyObj(response))
-            .catch(err => console.error(err));
-    }
+//         fetch(`https://online-movie-database.p.rapidapi.com/actors/get-bio?nconst=${pickRandom(topHundredArray)}`, options)
+//             .then(response => response.json())
+//             .then(response => copyObj(response))
+//             .catch(err => console.error(err));
+//     }
 
-// let testObj = [{
-//     name: 'Ben Affleck',
-//     image: {
-//         height: 1904,
-//         id: 'name and numbers',
-//         url: 'https://m.media-amazon.com/images/M/MV5BMzczNzNiMDAtMmUzZS00MTkwLWIwOTYtNmYyNjg3MTVkNThhXkEyXkFqcGdeQXVyMjA4MjI5MTA@._V1_UY1200_CR135,0,630,1200_AL_.jpg'
-//     },
-//     birthDate: '1972-08-15'
-// }]
+let testObj = {
+    name: 'Ben Affleck',
+    image: {
+        height: 1904,
+        id: 'name and numbers',
+        url: 'https://m.media-amazon.com/images/M/MV5BMzczNzNiMDAtMmUzZS00MTkwLWIwOTYtNmYyNjg3MTVkNThhXkEyXkFqcGdeQXVyMjA4MjI5MTA@._V1_UY1200_CR135,0,630,1200_AL_.jpg'
+    },
+    birthDate: '1972-08-15',
+    miniBios: [
+        {author: 'name',
+        id: 'name and numbers',
+        language: 'en',
+        text: 'American Actor and filmmaker'
+    }]
+}
 
 
 let newObjArray = []
@@ -63,17 +69,22 @@ function renderActor(actorObj) {
 
     let actorName = document.createElement('h3')
     let actorImage = document.createElement('img')
+    let bioBtn = document.createElement('button')
     
     actorName.innerText = actorObj.name
     actorImage.src = actorObj.image.url
-    actorImage.className = 'actor-image'
+    actorImage.className = 'actorImage'
+    bioBtn.innerText = 'Show Bio'
+    
 
-
-    celebContainer.appendChild(actorName)
     celebContainer.appendChild(actorImage)
+    celebContainer.appendChild(actorName)
+    celebContainer.appendChild(bioBtn)
+
+    bioBtn.addEventListener('click', handleClick)
 
 }
-
+copyObj(testObj)
 
 //returns actors age 0=year, 1=month 2=day
 function getAge(actorObj) {
@@ -113,11 +124,30 @@ function handleFormSubmit(e) {
 
 }
 
-// document.querySelector('#next').addEventListener('click', handleNextClick)
+// currently this button shows bio, but does not hide yet
 
-// function handleNextClick(e) {
-//     console.log(e)
-// }
+function handleClick(e) {
+   
+    let celebContainer = document.querySelector('#celeb-info')
+
+    let bioDiv = document.createElement('div')
+
+    bioDiv.innerHTML = `
+    <h5>${newObjArray[0].miniBios[0].text}</h5>
+    <p>(${newObjArray[0].miniBios[0].author})
+    `
+   
+    if (e.target.innerText === "Show Bio") {
+    
+    celebContainer.appendChild(bioDiv)
+
+    e.target.innerText = "Hide Bio"
+
+   } else if (e.target.innerText === "Hide Bio") {
+    bioDiv.innerHTML = " "
+    e.target.innerText = "Show Bio"
+   }
+}
 
 
 })
