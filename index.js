@@ -1,5 +1,5 @@
 
-//document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const options = {
         method: 'GET',
@@ -91,25 +91,33 @@ function getAge(actorObj) {
 }
 
 
+document.querySelector('#age-form').addEventListener('submit', handleFormSubmit)
 
-
-
-document.querySelector('#age-form').addEventListener('submit', handleSubmit)
-
-function handleSubmit(e) {
+function handleFormSubmit(e) {
     e.preventDefault();
     let guess = parseInt(e.target[0].value);
-    console.log(guess)
+    let guessContainer = document.querySelector('#guess-container')
+    let answer = document.createElement('p')
+    answer.innerText = " "
+
     if (guess === getAge(newObjArray[0])) {
-        console.log(`That's right! ${newObjArray[0].name} is ${guess}`)
+        answer.innerText = `That's right! ${newObjArray[0].name} is ${guess}`
     }
     else if(guess > getAge(newObjArray[0])) {
-        console.log(`I know they look wise for their age, but you're too high`)
+        answer.innerText = `Wrong, ${newObjArray[0].name} is younger than ${guess}.`
     }
     else if(guess < getAge(newObjArray[0])) {
-        console.log(`I know they look young for their age, but you're too low`)
+        answer.innerText = `Nope, ${newObjArray[0].name} is older than ${guess}.`
     }
+    guessContainer.appendChild(answer)
+
 }
 
+// document.querySelector('#next').addEventListener('click', handleNextClick)
 
-//})
+// function handleNextClick(e) {
+//     console.log(e)
+// }
+
+
+})
