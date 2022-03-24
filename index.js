@@ -1,3 +1,5 @@
+let showBio = false
+
 
  document.addEventListener("DOMContentLoaded", () => {
 
@@ -128,24 +130,25 @@ function handleFormSubmit(e) {
 
 function handleClick(e) {
    
-    let celebContainer = document.querySelector('#celeb-info')
+    let bioDiv = document.querySelector('#bioDiv')
 
-    let bioDiv = document.createElement('div')
-
-    bioDiv.innerHTML = `
-    <h5>${newObjArray[0].miniBios[0].text}</h5>
-    <p>(${newObjArray[0].miniBios[0].author})
-    `
+    showBio = !showBio
    
-    if (e.target.innerText === "Show Bio") {
+    if (showBio) {
+        
+        bioDiv.innerHTML = " "
+        
+        bioDiv.innerHTML = `
+        <h5>${newObjArray[0].miniBios[0].text}</h5>
+        <p>(${newObjArray[0].miniBios[0].author})
+        `
+
+        e.target.innerText = "Hide Bio"
+
+   } else {
     
-    celebContainer.appendChild(bioDiv)
-
-    e.target.innerText = "Hide Bio"
-
-   } else if (e.target.innerText === "Hide Bio") {
-    bioDiv.innerHTML = " "
-    e.target.innerText = "Show Bio"
+        document.querySelector('#bioDiv').innerHTML = " "
+        e.target.innerText = "Show Bio"
    }
 }
 
