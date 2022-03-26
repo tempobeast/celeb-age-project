@@ -1,9 +1,9 @@
 let showBio = false
 let topHundred;
-    
+let newActorObj;
+
 document.addEventListener("DOMContentLoaded", () => {   
-initialFetch()
-    function initialFetch() {
+
     const options = {
         method: 'GET',
         headers: {
@@ -14,13 +14,11 @@ initialFetch()
     
     fetch('https://online-movie-database.p.rapidapi.com/actors/list-most-popular-celebs?homeCountry=US&currentCountry=US&purchaseCountry=US', options)
         .then(response => response.json())
-        .then(response => getActorBio(response))
+        .then(response => topHundred = response)
+        .then(topHundred => getActorBio(topHundred))
         .catch(err => console.error(err));
         
 
-   
-
-    
 
     function pickRandom(array) {
         let random = Math.floor(Math.random() * 100)
@@ -28,7 +26,7 @@ initialFetch()
     }
 
        
-    function getActorBio (topHundredArray) {
+    function getActorBio () {
     const options = {
         method: 'GET',
         headers: {
@@ -37,41 +35,17 @@ initialFetch()
         }
     };
         
-    fetch(`https://online-movie-database.p.rapidapi.com/actors/get-bio?nconst=${pickRandom(topHundredArray)}`, options)
+    fetch(`https://online-movie-database.p.rapidapi.com/actors/get-bio?nconst=${pickRandom(topHundred)}`, options)
         .then(response => response.json())
-        .then(response => copyObj(response))
+        .then(response => newActorObj = response)
+        .then(newActorObj => renderActor(newActorObj))
         .catch(err => console.error(err));
+        
     }
 
-    
-// let testObj = {
-//     name: 'Ben Affleck',
-//     image: {
-//         height: 1904,
-//         id: 'name and numbers',
-//         url: 'https://m.media-amazon.com/images/M/MV5BMzczNzNiMDAtMmUzZS00MTkwLWIwOTYtNmYyNjg3MTVkNThhXkEyXkFqcGdeQXVyMjA4MjI5MTA@._V1_UY1200_CR135,0,630,1200_AL_.jpg'
-//     },
-//     birthDate: '1972-08-15',
-//     miniBios: [
-//         {author: 'name',
-//         id: 'name and numbers',
-//         language: 'en',
-//         text: 'American Actor and filmmaker'
-//     }]
-// }
-
-    let newActorObj;
-    
-
-    function copyObj (obj) {
-        newActorObj = obj
-        renderActor(newActorObj)
-    }
-
-    
     function renderActor(actorObj) {
         let celebContainer = document.querySelector('#celeb-info')
-
+        
         let actorName = document.createElement('h3')
         let actorImage = document.createElement('img')
         let bioBtn = document.createElement('button')
@@ -80,8 +54,7 @@ initialFetch()
         actorImage.src = actorObj.image.url
         actorImage.className = 'actorImage'
         bioBtn.innerText = 'Show Bio'
-    
-
+        
         celebContainer.appendChild(actorImage)
         celebContainer.appendChild(actorName)
         celebContainer.appendChild(bioBtn)
@@ -89,7 +62,6 @@ initialFetch()
         bioBtn.addEventListener('click', handleBioClick)
 
     }
-//copyObj(testObj)
 
 //returns actors age 0=year, 1=month 2=day
     function getAge(actorObj) {
@@ -125,9 +97,9 @@ initialFetch()
         else if(guess < getAge(newActorObj)) {
             answer.innerText = `Nope, ${newActorObj.name} is older than ${guess}.`
         }
-        e.target[0].value = ' '
+        
         guessContainer.appendChild(answer)
-
+        e.target[0].value = ' '
     }
 
     function handleBioClick(e) {
@@ -141,7 +113,7 @@ initialFetch()
         
             bioDiv.innerHTML = `
             <h5>${newActorObj.miniBios[0].text}</h5>
-            <p>(${newActorObj.miniBios[0].author})</p>
+            <p>(${newActorObj.miniBios[0].author})
             `
 
             e.target.innerText = "Hide Bio"
@@ -161,9 +133,7 @@ initialFetch()
         info.innerHTML = ' '
         bio.innerHTML = ' '
         guess.innerHTML = ' '
-        
-        initialFetch()
-    })
 
-    }
+        getActorBio(topHundred)    
+    })
 })

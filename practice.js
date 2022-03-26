@@ -43,24 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
 
-    
-// let testObj = {
-//     name: 'Ben Affleck',
-//     image: {
-//         height: 1904,
-//         id: 'name and numbers',
-//         url: 'https://m.media-amazon.com/images/M/MV5BMzczNzNiMDAtMmUzZS00MTkwLWIwOTYtNmYyNjg3MTVkNThhXkEyXkFqcGdeQXVyMjA4MjI5MTA@._V1_UY1200_CR135,0,630,1200_AL_.jpg'
-//     },
-//     birthDate: '1972-08-15',
-//     miniBios: [
-//         {author: 'name',
-//         id: 'name and numbers',
-//         language: 'en',
-//         text: 'American Actor and filmmaker'
-//     }]
-// }
-
-    
     function renderActor(actorObj) {
         let celebContainer = document.querySelector('#celeb-info')
         
@@ -72,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actorImage.src = actorObj.image.url
         actorImage.className = 'actorImage'
         bioBtn.innerText = 'Show Bio'
-
+        console.log("hello")
         celebContainer.appendChild(actorImage)
         celebContainer.appendChild(actorName)
         celebContainer.appendChild(bioBtn)
@@ -80,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         bioBtn.addEventListener('click', handleBioClick)
 
     }
-//copyObj(testObj)
 
 //returns actors age 0=year, 1=month 2=day
     function getAge(actorObj) {
@@ -153,10 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
         bio.innerHTML = ' '
         guess.innerHTML = ' '
 
-
-        getActorBio(topHundred)
-        
+        getActorBio(topHundred)    
     })
-
-
 })
