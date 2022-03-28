@@ -1,5 +1,6 @@
 body {
-    background-color: white;
+    background-color: black;
+    color: white;
     text-align: center;
 }
 h1 {
@@ -8,7 +9,7 @@ h1 {
     font-size: 5vmax;
     margin: 0;
     padding: 20px 0;
-    color: black;
+    color: white;
     text-shadow: 3px 3px 1px silver;
 }
 
@@ -18,16 +19,24 @@ h2 {
 
 h3 {
     font-size: 4.5vmin;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    text-shadow: 2px 2px 1px silver
 }
 
 .actorImage {
-    width: 40%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 
 h5 {
     font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#age-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
