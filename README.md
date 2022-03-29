@@ -8,11 +8,11 @@ The game pulls from an api of 100 actors that are currently relevant because the
 
 Each actor image and name is accompanied by an expandable bio section that gives some context to less familiar actors. 
 
-![gif of bio button] (https://media.giphy.com/media/l6bWmwLp2ZydJ16Sja/giphy.gif)
+![gif of bio button](https://media.giphy.com/media/l6bWmwLp2ZydJ16Sja/giphy.gif)
 
 The user guesses the actor's age and the program returns correct, older or younger.
 
-![gif of working app] (https://media.giphy.com/media/lKlcL47NFr0ZW7slDi/giphy.gif)
+![gif of working app](https://media.giphy.com/media/lKlcL47NFr0ZW7slDi/giphy.gif)
 
 ## API Information
 
