@@ -1,10 +1,9 @@
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    let showBio = false;
+let showBio = false;
     let topHundred;
     let newActorObj;
 
+document.addEventListener("DOMContentLoaded", () => {
+   
     const options = {
         method: "GET",
         headers: {
@@ -33,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function getActorBio() {
-        console.log(topHundred)
+        
         const options = {
             method: "GET",
             headers: {
