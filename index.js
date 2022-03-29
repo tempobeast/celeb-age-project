@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function pickRandom(array) {
         let random = Math.floor(Math.random() * 100);
         return array[random].slice(6);
-        //returns actorId: "nm" and 7 digits (ex. "nm1534698")
+        //returns actorId: "nm" and 7 digits (ex. "nm1534698") which is required for getActorBio
     }
 
     function getActorBio() {
@@ -127,22 +127,44 @@ document.addEventListener("DOMContentLoaded", () => {
         //removes numbers from bios because some contain actor birthday
         let adjustedBio = newActorObj.miniBios[0].text.replace(/[0-9]/g, "*");
 
-        showBio = !showBio;
-
-        if (showBio) {
-            bioDiv.innerHTML = " ";
+        bioDiv.innerHTML = " ";
 
             bioDiv.innerHTML = `
             <h5>${adjustedBio}</h5>
             <p>(${newActorObj.miniBios[0].author})
             `;
+            
+        //    bioDiv.style.display = "none";
+            
+        showBio = !showBio;
 
+        if (showBio) {
+            bioDiv.style.display = "block";
             e.target.innerText = "Hide Bio";
+            
         } else {
-            document.querySelector("#bioDiv").innerHTML = " ";
-
-            e.target.innerText = "Show Bio";
+            bioDiv.style.display = "none";
+            e.target.innerText = "Show Bio"
         }
+
+
+
+
+
+        // if (showBio) {
+        //     bioDiv.innerHTML = " ";
+
+        //     bioDiv.innerHTML = `
+        //     <h5>${adjustedBio}</h5>
+        //     <p>(${newActorObj.miniBios[0].author})
+        //     `;
+
+        //     e.target.innerText = "Hide Bio";
+        // } else {
+        //     document.querySelector("#bioDiv").innerHTML = " ";
+
+        //     e.target.innerText = "Show Bio";
+        // }
     }
 
     let nextBtn = document.querySelector("#next");
