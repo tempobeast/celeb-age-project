@@ -10,9 +10,10 @@ Each actor image and name is accompanied by an expandable bio section that gives
 
 ![gif of bio button](https://media.giphy.com/media/l6bWmwLp2ZydJ16Sja/giphy.gif)
 
-The user guesses the actor's age and the program returns correct, older or younger.
+The program gets the actors date of birth and compares it to the current date.
+The user then guesses the actor's age and the program returns correct, older or younger.
 
-![gif of working app](https://media.giphy.com/media/lKlcL47NFr0ZW7slDi/giphy.gif)
+![gif of working app](https://media.giphy.com/media/2foJGpmOcIlcsAH5x9/giphy.gif)
 
 ## API Information
 
