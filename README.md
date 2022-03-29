@@ -8,16 +8,13 @@ The game pulls from an api of 100 actors that are currently relevant because the
 
 Each actor image and name is accompanied by an expandable bio section that gives some context to less familiar actors. 
 
-https://media.giphy.com/media/l6bWmwLp2ZydJ16Sja/giphy.gif
+![gif of bio button] (https://media.giphy.com/media/l6bWmwLp2ZydJ16Sja/giphy.gif)
 
 The user guesses the actor's age and the program returns correct, older or younger.
 
-https://media.giphy.com/media/lKlcL47NFr0ZW7slDi/giphy.gif
+![gif of working app] (https://media.giphy.com/media/lKlcL47NFr0ZW7slDi/giphy.gif)
 
 ## API Information
 
-The api used for this project is called Online Movie Database which is available through rapidapi. Two fetches are necessary. The first gets a list ids for the the current top 100 actors. That id is then used in the second fetch to get the actor bios that include names, image urls, birthdates and mini bios. 
+The api used for this project is Online Movie Database which is available through rapidapi. Two fetches are necessary. The first gets a list ids for the the current top 100 actors. Each subsequent fetch uses the id to get the actor bios that include names, image urls, birthdates and mini bios. 
 
-## Future Improvements
-
-In the future this app will 
