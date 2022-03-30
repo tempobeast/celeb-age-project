@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>(${newActorObj.miniBios[0].author})
             `;
             
-        //    bioDiv.style.display = "none";
+            bioDiv.style.display = "none";
             
         showBio = !showBio;
 
@@ -146,25 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
             bioDiv.style.display = "none";
             e.target.innerText = "Show Bio"
         }
-
-
-
-
-
-        // if (showBio) {
-        //     bioDiv.innerHTML = " ";
-
-        //     bioDiv.innerHTML = `
-        //     <h5>${adjustedBio}</h5>
-        //     <p>(${newActorObj.miniBios[0].author})
-        //     `;
-
-        //     e.target.innerText = "Hide Bio";
-        // } else {
-        //     document.querySelector("#bioDiv").innerHTML = " ";
-
-        //     e.target.innerText = "Show Bio";
-        // }
     }
 
     let nextBtn = document.querySelector("#next");
