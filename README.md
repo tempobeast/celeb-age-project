@@ -19,6 +19,6 @@ The user submits a guess as to the actors age via a form submission and the prog
 
 The api used for this project is Online Movie Database which is available through rapidapi. Two fetches are necessary. The first gets a list ids for the the current top 100 actors. Each subsequent fetch uses the id to get the actor bios that include names, image urls, birthdates and mini bios. 
 
-# Future Features
+## Future Features
 
 In the future the game will have a point system. The user starts with 15 pts. On any incorrect guess the number of years off of the actual age will be deducted from the total. When the point total hits 0, the game is over. This will also require functionality to make sure that an actor is removed from the topHundred array after being accessed. A new api will be necessary in the future to access more than 100 actors. 
