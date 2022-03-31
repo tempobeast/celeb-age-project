@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderActor(actorObj) {
-        let celebContainer = document.querySelector("#celeb-info");
+        const celebContainer = document.querySelector("#celeb-info");
 
         let actorName = document.createElement("h3");
         let actorImage = document.createElement("img");
@@ -102,8 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleFormSubmit(e) {
         e.preventDefault();
         let guess = parseInt(e.target[0].value);
-        let guessContainer = document.querySelector("#guess-container");
-        let answer = document.createElement("p");
+        const guessContainer = document.querySelector("#guess-container");
+        const answer = document.createElement("p");
         answer.innerText = " ";
 
         if (guess === getAge(newActorObj)) {
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleBioClick(e) {
-        let bioDiv = document.querySelector("#bioDiv");
+        const bioDiv = document.querySelector("#bioDiv");
         //removes numbers from bios because some contain actor birthday
         let adjustedBio = newActorObj.miniBios[0].text.replace(/[0-9]/g, "*");
 
@@ -148,14 +148,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let nextBtn = document.querySelector("#next");
+    const nextBtn = document.querySelector("#next");
     nextBtn.addEventListener("click", () => {
-        let info = document.querySelector("#celeb-info");
-        let bio = document.querySelector("#bioDiv");
-        let guess = document.querySelector("#guess-container");
+        const info = document.querySelector("#celeb-info");
+        const bio = document.querySelector("#bioDiv");
+        const guess = document.querySelector("#guess-container");
         info.innerHTML = " ";
         bio.innerHTML = " ";
         guess.innerHTML = " ";
+
+        showBio = false;
 
         getActorBio();
     });
