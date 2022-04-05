@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
             "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
-            "X-RapidAPI-Key": "f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1",
+            "X-RapidAPI-Key": "",
         },
     };
 
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "GET",
             headers: {
                 "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
-                "X-RapidAPI-Key": "f43401e00bmsh53c16209076bc5bp10bb73jsn9e36d146b2a1",
+                "X-RapidAPI-Key": "",
             },
         };
 
